@@ -1,5 +1,5 @@
 def mvnHome = 'D:\\apache-maven-3.6.0'
-def pipelineFolder = 'C:\\Program Files (x86)\\Jenkins\\workspace\\jcpipeline'
+def pipelineFolder = 'C:\\Program Files (x86)\\Jenkins\\workspace\\scmpipeline'
 def warName = 'Jacehellworld.war' //depends on maven project final Name and if the final artifact is .war
 pipeline {
   agent any 
