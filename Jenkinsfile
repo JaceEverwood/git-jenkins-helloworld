@@ -5,19 +5,25 @@ pipeline {
   agent any 
     stages {
 	      
-	   stage('pulling-code') { 
-	      git url: 'https://github.com/JaceEverwood/git-jenkins-helloworld.git'
+	   stage('pulling-code') {
+		   steps{
+			   git url: 'https://github.com/JaceEverwood/git-jenkins-helloworld.git'
+		   }
 	   }
 	   
 	   //use dir(folderLocation) if project has to be build in other folder
 	   stage('building-project'){
-	        bat "${mvnHome}\\bin\\mvn clean package "
+		   steps{
+			   bat "${mvnHome}\\bin\\mvn clean package "
+		   }
 	   }
 	   
 	   stage('deploy-tomcat'){
-	       dir(pipelineFolder){
-	           bat "copy .\\target\\${warName} D:\\apache-tomcat-9.0.10\\webapps"
-	       }
+		   steps{
+			   dir(pipelineFolder){
+				   bat "copy .\\target\\${warName} D:\\apache-tomcat-9.0.10\\webapps"
+			   }
+		   }
 	   }
-     }
-	}
+    }
+}
